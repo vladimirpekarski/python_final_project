@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'final_app/style.css' %}">
+    <script src="{% static 'final_app/javascript.js' %}"></script>
+    <title>{% block title %}XO manage{% endblock %}</title>
+</head>
+
+<body>
+    <div id="sidebar">
+        {% block sidebar %}
+            <div id="links"><a href="/admin/login">Admin</a><a href="/final_app/players/">Players</a>
+            <a href="/final_app/logout/">Logout</a></div>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

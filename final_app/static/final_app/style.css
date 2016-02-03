@@ -1,0 +1,24 @@
+div#links {
+    margin: 10px;
+}
+
+a {
+    margin: 10px;
+}
+
+form {
+    margin: 20px;
+}
+
+p#not_found {
+    margin: 20px;
+    font-size: 25px;
+}
+
+td {
+    padding: 5px;
+}
+
+p#change {
+    margin: 20px;
+}

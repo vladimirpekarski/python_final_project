@@ -1,0 +1,8 @@
+<form action='.?next={{ redirect_to }}' method='POST'> {% csrf_token %}
+    <div >
+        <input type='text' name='username' placeholder="Username">
+        <input type='password' name='password' placeholder="Password">
+
+        <input type='submit' value='login'>
+    </div>
+</form>

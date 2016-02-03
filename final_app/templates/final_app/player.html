@@ -1,0 +1,25 @@
+{% extends "final_app/base.html" %}
+{% block title %}Player Detail {% endblock %}
+
+{% block content %}
+{% if player %}
+    <table border="1">
+        <caption></caption>
+        <tr>
+            <th>User Name</th>
+            <th>XP</th>
+            <th>Email</th>
+            <th>Created</th>
+            <th>Experience</th>
+        </tr>
+        <tr><td> {{ player.nickname }}</td>
+            <td> {{ player.xp }}</td>
+            <td> {{ player.email }}</td>
+            <td> {{ player.created }} </td>
+            <td><a href="/final_app/change_experience/{{ player.id }}">Change experience</a> </td>
+        </tr>
+    </table>
+{% else %}
+    <p id="not_found">Player not found</p>
+{% endif %}
+{% endblock %}

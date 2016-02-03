@@ -1,0 +1,12 @@
+{% extends "final_app/base.html" %}
+
+{% block title %} Change player experience {% endblock %}
+
+{% block content %}
+<p id="change">Changing experience of player {{ player.nickname }}:</p>
+<form action="/final_app/change_experience/{{ player.id }}/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

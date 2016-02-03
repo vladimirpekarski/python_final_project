@@ -1,0 +1,49 @@
+{% extends "final_app/base.html" %}
+{% block title %}Player search {% endblock %}
+
+{% block sidebar %}
+    <div id="links"><a href="/admin/login">Admin</a><a href="/final_app/logout/">Logout</a></div>
+{% endblock %}
+
+{% block content %}
+<form action="" method="get">
+    <p>Search for player:</p>
+    {{form}}
+    <input type="submit" value="Search" onclick="return checkEmpty()">
+</form>
+
+<table border="1">
+    <caption></caption>
+    <tr>
+        <th>User Name</th>
+        <th>XP</th>
+        <th>Email</th>
+        <th>Created</th>
+        <th>Experience</th>
+    </tr>
+    {% for player in players %}
+    <tr><td> {{ player.nickname }} </td>
+        <td> {{ player.xp }} </td>
+        <td> {{ player.email }} </td>
+        <td> {{ player.created }} </td>
+        <td><a href="/final_app/change_experience/{{ player.id }}">Change experience</a> </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if players.has_previous %}
+        <a href="?page={{ players.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ players.number }} of {{ players.paginator.num_pages }}.
+        </span>
+
+        {% if players.has_next %}
+        <a href="?page={{ players.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
