@@ -4,7 +4,7 @@
 
 {% block content %}
 <p id="change">Changing experience of player {{ player.nickname }}:</p>
-<form action="/final_app/change_experience/{{ player.id }}/" method="post">
+<form action="/change_experience/{{ player.id }}/" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit" />

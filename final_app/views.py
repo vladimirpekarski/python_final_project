@@ -8,7 +8,7 @@ from .models import Players
 from django.conf import settings
 from . import forms
 
-@login_required(login_url='/final_app/login')
+@login_required(login_url='/login')
 def listing(request):
     per_page = settings.USER_PER_PAGE
     form = forms.SearchPlayerForm(request.GET or None)
@@ -36,7 +36,7 @@ def listing(request):
                                                    'players': players})
 
 
-@login_required(login_url='/final_app/login')
+@login_required(login_url='/login')
 def change_player_experience(request, player_id):
     player = Players.objects.get(id=player_id)
     form = forms.ChangeExperienceForm(data={"experience": player.xp})
@@ -46,7 +46,7 @@ def change_player_experience(request, player_id):
         if form.is_valid():
             player.xp = form.cleaned_data["experience"]
             player.save()
-            return HttpResponseRedirect("/final_app/players")
+            return HttpResponseRedirect("/")
 
     template_data = {
         "form": form,
@@ -57,7 +57,7 @@ def change_player_experience(request, player_id):
                   template_data)
 
 def login_custom(request):
-    _next = request.GET.get('next', '/final_app/players')
+    _next = request.GET.get('next', '/')
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']

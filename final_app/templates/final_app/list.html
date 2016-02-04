@@ -2,10 +2,11 @@
 {% block title %}Player search {% endblock %}
 
 {% block sidebar %}
-    <div id="links"><a href="/admin/login">Admin</a><a href="/final_app/logout/">Logout</a></div>
+    <div id="links"><a href="/admin/login">Admin</a><a href="/logout/">Logout</a></div>
 {% endblock %}
 
 {% block content %}
+{% if players %}
 <form action="" method="get">
     <p>Search for player:</p>
     {{form}}
@@ -16,6 +17,7 @@
     <caption></caption>
     <tr>
         <th>User Name</th>
+        <th>Password</th>
         <th>XP</th>
         <th>Email</th>
         <th>Created</th>
@@ -23,10 +25,11 @@
     </tr>
     {% for player in players %}
     <tr><td> {{ player.nickname }} </td>
+        <td> *************** </td>
         <td> {{ player.xp }} </td>
         <td> {{ player.email }} </td>
         <td> {{ player.created }} </td>
-        <td><a href="/final_app/change_experience/{{ player.id }}">Change experience</a> </td>
+        <td><a href="/change_experience/{{ player.id }}">Change experience</a> </td>
     </tr>
     {% endfor %}
 </table>
@@ -46,4 +49,7 @@
         {% endif %}
     </span>
 </div>
+{%  else%}
+<p id="empty">Users Data base is empty</p>
+{% endif %}
 {% endblock %}
